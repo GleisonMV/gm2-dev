@@ -1,0 +1,11 @@
+import 'package:flutter/material.dart';
+import 'widget.dart';
+
+abstract class {{name}}ViewModel extends State<{{name}}Widget> {
+  Future<List<String>> getItems() async {
+    return [
+      'item 1',
+      'item 2',
+    ];
+  }
+}

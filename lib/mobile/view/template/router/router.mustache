@@ -1,0 +1,10 @@
+import 'package:flutter/widgets.dart';
+{{#imports}}
+import '{{{.}}}';
+{{/imports}}
+
+Map<String, WidgetBuilder> mapOfRoutes = <String, WidgetBuilder>{
+  {{#keys}}
+  {{{.}}},
+  {{/keys}}
+};

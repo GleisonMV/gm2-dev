@@ -1,0 +1,16 @@
+import 'package:flutter/material.dart';
+import 'navigation.dart';
+
+abstract class {{name}}ViewModel extends State<{{name}}Navigation> {
+  void navigate(String path) {
+    switch (path) {
+      default:
+        Navigator.pushNamedAndRemoveUntil(
+          context,
+          path,
+          (route) => false,
+        );
+        break;
+    }
+  }
+}

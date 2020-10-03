@@ -1,0 +1,37 @@
+import 'package:flutter/material.dart';
+import 'view_model.dart';
+
+class {{name}}View extends {{name}}ViewModel {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("{{name}}"),
+      ),
+      body: Container(
+        child: FutureBuilder<List<String>>(
+          future: getItems(),
+          builder: (context, snapshot) {
+            if (snapshot.hasError) {
+              return Center(
+                child: Text('Error'),
+              );
+            }
+            if (!snapshot.hasData) {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            return ListView.builder(
+              itemCount: snapshot.data.length,
+              itemBuilder: (context, index) {
+                String item = snapshot.data[index];
+                return Text(item);
+              },
+            );
+          },
+        ),
+      ),
+    );
+  }
+}

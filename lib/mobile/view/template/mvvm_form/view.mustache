@@ -1,0 +1,51 @@
+import 'package:flutter/material.dart';
+import 'view_model.dart';
+
+class {{name}}View extends {{name}}ViewModel {
+ final _formKey = GlobalKey<FormState>();
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Product"),
+      ),
+      body: Container(
+        child: Form(
+          key: _formKey,
+          child: ListView(
+            padding: const EdgeInsets.all(16),
+            children: [
+              TextFormField(
+                onChanged: (value) {
+                  this.text = value;
+                },
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return 'Please enter some text';
+                  }
+                  return null;
+                },
+                decoration: const InputDecoration(labelText: "Text"),
+              ),
+              RaisedButton(
+                color: Colors.blue,
+                onPressed: () {
+                  if (_formKey.currentState.validate()) {
+                    this.formAction();
+                  }
+                },
+                child: Text(
+                  'Submit',
+                  style: const TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
